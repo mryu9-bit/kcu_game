@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,38 +9,20 @@
 <body>
 
   <div id="wb-wrap">
-
-    <!-- Mode selection screen -->
-    <div id="wb-mode-screen">
-      <h1>Wall Breaker</h1>
-      <p>Select difficulty</p>
-      <div id="wb-mode-btns">
-        <button class="wb-mode-btn" onclick="WB.startGame('easy')">Easy</button>
-        <button class="wb-mode-btn" onclick="WB.startGame('medium')">Medium</button>
-        <button class="wb-mode-btn" onclick="WB.startGame('hard')">Hard</button>
-      </div>
+    <div id="wb-hud">
+      <span>점수: <b id="wb-score">0</b></span>
+      <span>레벨: <b id="wb-level">1</b></span>
+      <span>목숨: <b id="wb-lives">♥ ♥ ♥</b></span>
     </div>
-
-    <!-- Game screen (hidden until mode is chosen) -->
-    <div id="wb-game-screen" style="display:none;">
-      <div id="wb-hud">
-        <span>Score: <b id="wb-score">0</b></span>
-        <span>Level: <b id="wb-level">1</b></span>
-        <span id="wb-mode-label"></span>
-        <span>Lives: <b id="wb-lives">♥ ♥ ♥</b></span>
-      </div>
-      <canvas id="wb-canvas" width="480" height="520"></canvas>
-      <div id="wb-msg">Press SPACE or click to launch</div>
-      <div id="wb-btns">
-        <button class="wb-btn" onclick="WB.backToMenu()">Menu</button>
-        <button class="wb-btn" onclick="WB.restart()">Restart</button>
-      </div>
+    <canvas id="wb-canvas" width="480" height="520"></canvas>
+    <div id="wb-msg">space or click to shoot></div>
+    <div id="wb-btns">
+      <button class="wb-btn" onclick="WB.restart()">restart</button>
     </div>
+</div> 
 
-  </div>
 
   <script src="game.js"></script>
 </body>
 </html>
-
 

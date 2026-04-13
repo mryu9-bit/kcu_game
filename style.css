@@ -1,0 +1,85 @@
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: #0b0b1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ccc;
+  }
+  
+  /* ── Layout Wrapper ─────────────────────────────────────────── */
+  #wb-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+  }
+  
+  /* ── HUD (점수 / 레벨 / 목숨) ───────────────────────────────── */
+  #wb-hud {
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  #wb-hud b {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  /* ── Canvas ─────────────────────────────────────────────────── */
+  #wb-canvas {
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: #0a0a14;
+    cursor: none;
+  }
+  
+  /* ── 상태 메시지 ─────────────────────────────────────────────── */
+  #wb-msg {
+    font-size: 13px;
+    color: #888;
+    height: 20px;
+    letter-spacing: 0.03em;
+  }
+  
+  /* ── 버튼 ────────────────────────────────────────────────────── */
+  #wb-btns {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .wb-btn {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    padding: 7px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  
+  .wb-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  
+  .wb-btn:active {
+    transform: scale(0.97);
+  }
+
+
