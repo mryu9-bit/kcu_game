@@ -1,45 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wall Breaker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>테트리스</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="app">
+    <div id="title">TETRIS</div>
 
-  <div id="wb-wrap">
-
-    <!-- Mode selection screen -->
-    <div id="wb-mode-screen">
-      <h1>Wall Breaker</h1>
-      <p>Select difficulty</p>
-      <div id="wb-mode-btns">
-        <button class="wb-mode-btn" onclick="WB.startGame('easy')">Easy</button>
-        <button class="wb-mode-btn" onclick="WB.startGame('medium')">Medium</button>
-        <button class="wb-mode-btn" onclick="WB.startGame('hard')">Hard</button>
-      </div>
+    <div id="difficulty-bar">
+      <button class="diff-btn active" data-diff="easy">EASY</button>
+      <button class="diff-btn" data-diff="medium">MEDIUM</button>
+      <button class="diff-btn" data-diff="hard">HARD</button>
     </div>
 
-    <!-- Game screen (hidden until mode is chosen) -->
-    <div id="wb-game-screen" style="display:none;">
-      <div id="wb-hud">
-        <span>Score: <b id="wb-score">0</b></span>
-        <span>Level: <b id="wb-level">1</b></span>
-        <span id="wb-mode-label"></span>
-        <span>Lives: <b id="wb-lives">♥ ♥ ♥</b></span>
+    <div id="game-area">
+      <div id="board-wrap">
+        <canvas id="board" width="240" height="480"></canvas>
+        <div id="overlay">
+          <div id="overlay-title">TETRIS</div>
+          <div id="overlay-sub">난이도를 선택 후 시작하세요</div>
+        </div>
       </div>
-      <canvas id="wb-canvas" width="480" height="520"></canvas>
-      <div id="wb-msg">Press SPACE or click to launch</div>
-      <div id="wb-btns">
-        <button class="wb-btn" onclick="WB.backToMenu()">Menu</button>
-        <button class="wb-btn" onclick="WB.restart()">Restart</button>
+      <div id="side">
+        <div class="panel">
+          <div class="panel-label">점수</div>
+          <div class="panel-value" id="score">0</div>
+        </div>
+        <div class="panel">
+          <div class="panel-label">라인</div>
+          <div class="panel-value" id="lines">0</div>
+        </div>
+        <div class="panel">
+          <div class="panel-label">다음</div>
+          <canvas id="next" width="100" height="100"></canvas>
+        </div>
+        <button id="btn-start">시작 / 재시작</button>
+        <div class="panel">
+          <div class="panel-label">조작법</div>
+          <div id="controls-hint">
+            ← → 이동<br />
+            ↑ 회전<br />
+            ↓ 빠르게<br />
+            Space 즉시 낙하
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
-
-  <script src="game.js"></script>
+  <script src="tetris.js"></script>
 </body>
 </html>
 
