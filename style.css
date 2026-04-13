@@ -1,155 +1,187 @@
-/* ── Reset & Base ───────────────────────────────────────────── */
-*, *::before, *::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   
   body {
-    background: #0a0a14;
+    background: #1a1a2e;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
-    color: #ccc;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f0f0f0;
   }
   
-  /* ── Layout Wrapper ─────────────────────────────────────────── */
-  #wb-wrap {
+  #app {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 20px;
+    padding: 2rem 0;
   }
   
-  /* ── Mode Selection Screen ──────────────────────────────────── */
-  #wb-mode-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 60px 40px;
-  }
-  
-  #wb-mode-screen h1 {
-    font-size: 36px;
-    color: #ffffff;
-    letter-spacing: 0.08em;
-  }
-  
-  #wb-mode-screen p {
-    font-size: 14px;
-    color: #888;
-    letter-spacing: 0.05em;
-  }
-  
-  #wb-mode-btns {
-    display: flex;
-    gap: 16px;
-    margin-top: 8px;
-  }
-  
-  .wb-mode-btn {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    padding: 12px 32px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: transparent;
-    color: #ddd;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  
-  .wb-mode-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+  #title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 4px;
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 20px rgba(100, 150, 255, 0.5);
   }
   
-  /* Color-code each difficulty button */
-  .wb-mode-btn:nth-child(1) { border-color: #2fa84f; color: #2fa84f; }
-  .wb-mode-btn:nth-child(1):hover { background: rgba(47,168,79,0.12); color: #5fcf7a; }
-  
-  .wb-mode-btn:nth-child(2) { border-color: #e07a20; color: #e07a20; }
-  .wb-mode-btn:nth-child(2):hover { background: rgba(224,122,32,0.12); color: #f0a050; }
-  
-  .wb-mode-btn:nth-child(3) { border-color: #e03e3e; color: #e03e3e; }
-  .wb-mode-btn:nth-child(3):hover { background: rgba(224,62,62,0.12); color: #f07070; }
-  
-  /* ── HUD (Score / Level / Mode / Lives) ─────────────────────── */
-  #wb-hud {
+  /* Difficulty selector */
+  #difficulty-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 480px;
-    font-size: 13px;
-    color: #aaa;
-  }
-  
-  #wb-hud b {
-    color: #ffffff;
-    font-weight: 600;
-  }
-  
-  #wb-mode-label {
-    font-size: 11px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    border: 1px solid;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  
-  #wb-mode-label.easy   { color: #2fa84f; border-color: #2fa84f; }
-  #wb-mode-label.medium { color: #e07a20; border-color: #e07a20; }
-  #wb-mode-label.hard   { color: #e03e3e; border-color: #e03e3e; }
-  
-  /* ── Canvas ─────────────────────────────────────────────────── */
-  #wb-canvas {
-    display: block;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    gap: 0;
+    margin-bottom: 1.25rem;
+    border: 1px solid #3a3a5a;
     border-radius: 8px;
-    background: #0a0a14;
-    cursor: none;
+    overflow: hidden;
   }
   
-  /* ── Status Message ─────────────────────────────────────────── */
-  #wb-msg {
-    font-size: 13px;
-    color: #888;
-    height: 20px;
-    letter-spacing: 0.03em;
-  }
-  
-  /* ── Buttons ────────────────────────────────────────────────── */
-  #wb-btns {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .wb-btn {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
-    padding: 7px 20px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    color: #ccc;
+  .diff-btn {
+    padding: 8px 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border: none;
+    border-right: 1px solid #3a3a5a;
+    background: #16213e;
+    color: #8888aa;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
   
-  .wb-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+  .diff-btn:last-child {
+    border-right: none;
   }
   
-  .wb-btn:active {
+  .diff-btn:hover {
+    background: #1f2f55;
+    color: #ccc;
+  }
+  
+  .diff-btn.active[data-diff="easy"] {
+    background: #1a5c2a;
+    color: #5dea7a;
+  }
+  
+  .diff-btn.active[data-diff="medium"] {
+    background: #5c4a00;
+    color: #f0c040;
+  }
+  
+  .diff-btn.active[data-diff="hard"] {
+    background: #5c1a1a;
+    color: #f05050;
+  }
+  
+  /* Game layout */
+  #game-area {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  #board-wrap {
+    position: relative;
+  }
+  
+  canvas#board {
+    display: block;
+    border: 2px solid #3a3a5a;
+    border-radius: 6px;
+    background: #0a0a14;
+  }
+  
+  #side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 120px;
+  }
+  
+  .panel {
+    background: #16213e;
+    border: 1px solid #3a3a5a;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  
+  .panel-label {
+    font-size: 11px;
+    color: #8888aa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  
+  .panel-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  canvas#next {
+    display: block;
+    background: #0a0a14;
+    border-radius: 6px;
+    margin-top: 6px;
+  }
+  
+  #controls-hint {
+    font-size: 12px;
+    color: #8888aa;
+    line-height: 2;
+  }
+  
+  #btn-start {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #5a5a8a;
+    background: #0f3460;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  
+  #btn-start:hover {
+    background: #1a4a80;
+  }
+  
+  #btn-start:active {
     transform: scale(0.97);
+  }
+  
+  /* Overlay */
+  #overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 10, 20, 0.85);
+    border-radius: 6px;
+    gap: 10px;
+  }
+  
+  #overlay-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 3px;
+  }
+  
+  #overlay-sub {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    padding: 0 16px;
   }
 
   
