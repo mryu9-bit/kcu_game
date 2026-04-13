@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오목</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">오목</h1>
+
+    <div class="toolbar">
+      <div class="status" id="status">현재 턴: 흑</div>
+
+      <select id="modeSelect" class="control">
+        <option value="ai">1인용</option>
+        <option value="pvp">2인용</option>
+      </select>
+
+      <select id="levelSelect" class="control">
+        <option value="easy">쉬움</option>
+        <option value="normal" selected>보통</option>
+      </select>
+
+      <button id="resetBtn" class="reset-btn">Restart</button>
+    </div>
+
+    <section class="board-shell">
+      <canvas id="board" width="900" height="900"></canvas>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
