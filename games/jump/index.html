@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save the Princess</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Save the Princess</h1>
+
+    <div class="hud">
+      <div>Distance: <span id="score">0</span></div>
+      <div>Goal: <span id="goal">1000</span></div>
+    </div>
+
+    <div id="message" class="message">
+      <h2>The Princess Has Been Captured!</h2>
+      <p>Press SPACE to start and jump.</p>
+    </div>
+
+    <div id="game" class="game">
+      <div class="sky"></div>
+      <div class="cloud cloud1"></div>
+      <div class="cloud cloud2"></div>
+
+      <div id="castle" class="castle hidden"></div>
+      <div id="princess" class="princess hidden"></div>
+      <div id="player" class="player"></div>
+
+      <div class="ground"></div>
+    </div>
+
+    <button id="restartBtn" class="restart-btn">Restart</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

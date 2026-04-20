@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>테트리스</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="title">TETRIS</div>
+
+    <div id="difficulty-bar">
+      <button class="diff-btn active" data-diff="easy">EASY</button>
+      <button class="diff-btn" data-diff="medium">MEDIUM</button>
+      <button class="diff-btn" data-diff="hard">HARD</button>
+    </div>
+
+    <div id="game-area">
+      <div id="board-wrap">
+        <canvas id="board" width="240" height="480"></canvas>
+        <div id="overlay">
+          <div id="overlay-title">TETRIS</div>
+          <div id="overlay-sub">난이도를 선택 후 시작하세요</div>
+        </div>
+      </div>
+      <div id="side">
+        <div class="panel">
+          <div class="panel-label">점수</div>
+          <div class="panel-value" id="score">0</div>
+        </div>
+        <div class="panel">
+          <div class="panel-label">라인</div>
+          <div class="panel-value" id="lines">0</div>
+        </div>
+        <div class="panel">
+          <div class="panel-label">다음</div>
+          <canvas id="next" width="100" height="100"></canvas>
+        </div>
+        <button id="btn-start">시작 / 재시작</button>
+        <div class="panel">
+          <div class="panel-label">조작법</div>
+          <div id="controls-hint">
+            ← → 이동<br />
+            ↑ 회전<br />
+            ↓ 빠르게<br />
+            Space 즉시 낙하
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
+
+

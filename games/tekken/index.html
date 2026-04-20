@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D Fight Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-wrap">
+    <div class="ui">
+      <div class="hp-box">
+        <div class="hp" id="playerHp"></div>
+      </div>
+      <div class="title">2D Fight Game</div>
+      <div class="hp-box">
+        <div class="hp" id="enemyHp"></div>
+      </div>
+    </div>
+
+    <div class="message" id="message"></div>
+    <button class="restart-btn" id="restartBtn">다시 시작</button>
+
+    <canvas id="game" width="1000" height="500"></canvas>
+
+    <div class="controls">
+      조작법: A / D 이동, W 점프, F 공격
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
