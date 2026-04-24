@@ -9,19 +9,34 @@
 <body>
 
   <div id="wb-wrap">
+
+    <h1 id="wb-title">WALL BREAKER</h1>
+
+    <!-- ── 모드 탭 ── -->
+    <div id="wb-mode-tabs">
+      <button class="wb-tab active easy"   onclick="WB.startMode('easy')">EASY</button>
+      <button class="wb-tab medium"        onclick="WB.startMode('medium')">MEDIUM</button>
+      <button class="wb-tab hard"          onclick="WB.startMode('hard')">HARD</button>
+    </div>
+
+    <!-- ── HUD ── -->
     <div id="wb-hud">
       <span>점수: <b id="wb-score">0</b></span>
-      <span>레벨: <b id="wb-level">1</b></span>
+      
       <span>목숨: <b id="wb-lives">♥ ♥ ♥</b></span>
     </div>
-    <canvas id="wb-canvas" width="480" height="520"></canvas>
-    <div id="wb-msg">space or click to shoot></div>
-    <div id="wb-btns">
-      <button class="wb-btn" onclick="WB.restart()">restart</button>
-    </div>
-</div> 
 
+    <canvas id="wb-canvas" width="480" height="520"></canvas>
+
+    <div id="wb-msg"></div>
+
+    <div id="wb-btns">
+      <button class="wb-btn" onclick="WB.restart()">재시작</button>
+    </div>
+
+  </div>
 
   <script src="game.js"></script>
 </body>
 </html>
+

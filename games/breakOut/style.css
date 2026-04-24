@@ -1,155 +1,132 @@
 /* ── Reset & Base ───────────────────────────────────────────── */
 *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background: #0a0a14;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
-    color: #ccc;
-  }
-  
-  /* ── Layout Wrapper ─────────────────────────────────────────── */
-  #wb-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 20px;
-  }
-  
-  /* ── Mode Selection Screen ──────────────────────────────────── */
-  #wb-mode-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 60px 40px;
-  }
-  
-  #wb-mode-screen h1 {
-    font-size: 36px;
-    color: #ffffff;
-    letter-spacing: 0.08em;
-  }
-  
-  #wb-mode-screen p {
-    font-size: 14px;
-    color: #888;
-    letter-spacing: 0.05em;
-  }
-  
-  #wb-mode-btns {
-    display: flex;
-    gap: 16px;
-    margin-top: 8px;
-  }
-  
-  .wb-mode-btn {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    padding: 12px 32px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: transparent;
-    color: #ddd;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  
-  .wb-mode-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.5);
-  }
-  
-  /* Color-code each difficulty button */
-  .wb-mode-btn:nth-child(1) { border-color: #2fa84f; color: #2fa84f; }
-  .wb-mode-btn:nth-child(1):hover { background: rgba(47,168,79,0.12); color: #5fcf7a; }
-  
-  .wb-mode-btn:nth-child(2) { border-color: #e07a20; color: #e07a20; }
-  .wb-mode-btn:nth-child(2):hover { background: rgba(224,122,32,0.12); color: #f0a050; }
-  
-  .wb-mode-btn:nth-child(3) { border-color: #e03e3e; color: #e03e3e; }
-  .wb-mode-btn:nth-child(3):hover { background: rgba(224,62,62,0.12); color: #f07070; }
-  
-  /* ── HUD (Score / Level / Mode / Lives) ─────────────────────── */
-  #wb-hud {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 480px;
-    font-size: 13px;
-    color: #aaa;
-  }
-  
-  #wb-hud b {
-    color: #ffffff;
-    font-weight: 600;
-  }
-  
-  #wb-mode-label {
-    font-size: 11px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    border: 1px solid;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  
-  #wb-mode-label.easy   { color: #2fa84f; border-color: #2fa84f; }
-  #wb-mode-label.medium { color: #e07a20; border-color: #e07a20; }
-  #wb-mode-label.hard   { color: #e03e3e; border-color: #e03e3e; }
-  
-  /* ── Canvas ─────────────────────────────────────────────────── */
-  #wb-canvas {
-    display: block;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    background: #0a0a14;
-    cursor: none;
-  }
-  
-  /* ── Status Message ─────────────────────────────────────────── */
-  #wb-msg {
-    font-size: 13px;
-    color: #888;
-    height: 20px;
-    letter-spacing: 0.03em;
-  }
-  
-  /* ── Buttons ────────────────────────────────────────────────── */
-  #wb-btns {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .wb-btn {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 13px;
-    padding: 7px 20px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    color: #ccc;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-  }
-  
-  .wb-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-  }
-  
-  .wb-btn:active {
-    transform: scale(0.97);
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  
+body {
+  background: #0a0a14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+  color: #ccc;
+}
+
+/* ── Layout Wrapper ─────────────────────────────────────────── */
+#wb-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+/* ── Title ──────────────────────────────────────────────────── */
+#wb-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.12em;
+  margin-bottom: 2px;
+}
+
+/* ── Mode Tabs ──────────────────────────────────────────────── */
+#wb-mode-tabs {
+  display: flex;
+  width: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.wb-tab {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 0;
+  border: none;
+  background: rgba(255,255,255,0.04);
+  color: #666;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: background 0.15s, color 0.15s;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.wb-tab:last-child {
+  border-right: none;
+}
+
+/* Active states per color */
+.wb-tab.active.easy   { background: #2fa84f; color: #fff; }
+.wb-tab.active.medium { background: #e07a20; color: #fff; }
+.wb-tab.active.hard   { background: #e03e3e; color: #fff; }
+
+/* Hover states (non-active) */
+.wb-tab.easy:not(.active):hover   { background: rgba(47,168,79,0.15);  color: #2fa84f; }
+.wb-tab.medium:not(.active):hover { background: rgba(224,122,32,0.15); color: #e07a20; }
+.wb-tab.hard:not(.active):hover   { background: rgba(224,62,62,0.15);  color: #e03e3e; }
+
+/* ── HUD ────────────────────────────────────────────────────── */
+#wb-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 480px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+#wb-hud b {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ── Canvas ─────────────────────────────────────────────────── */
+#wb-canvas {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: #0a0a14;
+  cursor: none;
+}
+
+/* ── Status Message ─────────────────────────────────────────── */
+#wb-msg {
+  font-size: 13px;
+  color: #888;
+  height: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+#wb-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.wb-btn {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  padding: 7px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.wb-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.wb-btn:active {
+  transform: scale(0.97);
+}
+

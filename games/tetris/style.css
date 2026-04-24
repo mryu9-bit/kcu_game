@@ -1,187 +1,185 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background: #1a1a2e;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    color: #f0f0f0;
-  }
-  
-  #app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 0;
-  }
-  
-  #title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: 4px;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(100, 150, 255, 0.5);
-  }
-  
-  /* Difficulty selector */
-  #difficulty-bar {
-    display: flex;
-    gap: 0;
-    margin-bottom: 1.25rem;
-    border: 1px solid #3a3a5a;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .diff-btn {
-    padding: 8px 22px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    border: none;
-    border-right: 1px solid #3a3a5a;
-    background: #16213e;
-    color: #8888aa;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-  }
-  
-  .diff-btn:last-child {
-    border-right: none;
-  }
-  
-  .diff-btn:hover {
-    background: #1f2f55;
-    color: #ccc;
-  }
-  
-  .diff-btn.active[data-diff="easy"] {
-    background: #1a5c2a;
-    color: #5dea7a;
-  }
-  
-  .diff-btn.active[data-diff="medium"] {
-    background: #5c4a00;
-    color: #f0c040;
-  }
-  
-  .diff-btn.active[data-diff="hard"] {
-    background: #5c1a1a;
-    color: #f05050;
-  }
-  
-  /* Game layout */
-  #game-area {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  
-  #board-wrap {
-    position: relative;
-  }
-  
-  canvas#board {
-    display: block;
-    border: 2px solid #3a3a5a;
-    border-radius: 6px;
-    background: #0a0a14;
-  }
-  
-  #side {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 120px;
-  }
-  
-  .panel {
-    background: #16213e;
-    border: 1px solid #3a3a5a;
-    border-radius: 8px;
-    padding: 12px;
-  }
-  
-  .panel-label {
-    font-size: 11px;
-    color: #8888aa;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-  
-  .panel-value {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-  
-  canvas#next {
-    display: block;
-    background: #0a0a14;
-    border-radius: 6px;
-    margin-top: 6px;
-  }
-  
-  #controls-hint {
-    font-size: 12px;
-    color: #8888aa;
-    line-height: 2;
-  }
-  
-  #btn-start {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 8px;
-    border: 1px solid #5a5a8a;
-    background: #0f3460;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-  }
-  
-  #btn-start:hover {
-    background: #1a4a80;
-  }
-  
-  #btn-start:active {
-    transform: scale(0.97);
-  }
-  
-  /* Overlay */
-  #overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(10, 10, 20, 0.85);
-    border-radius: 6px;
-    gap: 10px;
-  }
-  
-  #overlay-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 3px;
-  }
-  
-  #overlay-sub {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.55);
-    text-align: center;
-    padding: 0 16px;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  
+body {
+  background: #1a1a2e;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+#title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(100, 150, 255, 0.5);
+}
+
+/* Difficulty selector */
+#difficulty-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border: 1px solid #3a3a5a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.diff-btn {
+  padding: 8px 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  border: none;
+  border-right: 1px solid #3a3a5a;
+  background: #16213e;
+  color: #8888aa;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.diff-btn:last-child {
+  border-right: none;
+}
+
+.diff-btn:hover {
+  background: #1f2f55;
+  color: #ccc;
+}
+
+.diff-btn.active[data-diff="easy"] {
+  background: #1a5c2a;
+  color: #5dea7a;
+}
+
+.diff-btn.active[data-diff="medium"] {
+  background: #5c4a00;
+  color: #f0c040;
+}
+
+.diff-btn.active[data-diff="hard"] {
+  background: #5c1a1a;
+  color: #f05050;
+}
+
+/* Game layout */
+#game-area {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#board-wrap {
+  position: relative;
+}
+
+canvas#board {
+  display: block;
+  border: 2px solid #3a3a5a;
+  border-radius: 6px;
+  background: #0a0a14;
+}
+
+#side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 120px;
+}
+
+.panel {
+  background: #16213e;
+  border: 1px solid #3a3a5a;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.panel-label {
+  font-size: 11px;
+  color: #8888aa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.panel-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+canvas#next {
+  display: block;
+  background: #0a0a14;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+#controls-hint {
+  font-size: 12px;
+  color: #8888aa;
+  line-height: 2;
+}
+
+#btn-start {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #5a5a8a;
+  background: #0f3460;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#btn-start:hover {
+  background: #1a4a80;
+}
+
+#btn-start:active {
+  transform: scale(0.97);
+}
+
+/* Overlay */
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 20, 0.85);
+  border-radius: 6px;
+  gap: 10px;
+}
+
+#overlay-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 3px;
+}
+
+#overlay-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  padding: 0 16px;
+}
