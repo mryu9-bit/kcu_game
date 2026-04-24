@@ -52,17 +52,36 @@ const overlay = document.getElementById('overlay');
 const overlayTitle = document.getElementById('overlay-title');
 const overlaySub = document.getElementById('overlay-sub');
 
-// 캔버스 포커스 설정 (키입력이 항상 캔버스로 가도록)
+// 캔버스 포커스 설정
 boardCanvas.setAttribute('tabindex', '0');
 boardCanvas.style.outline = 'none';
+boardCanvas.style.cursor = 'pointer';
 
 let grid, piece, nextPiece;
 let score, lines;
 let gameActive, rafId, lastTime;
 let dropInterval, dropCounter, linesSinceSpeedup;
 let currentDiff = 'easy';
+let focused = false;
 
-// 난이도 버튼: 클릭 시 active 전환 + 게임 재시작
+// 캔버스 클릭 시 포커스 확정 + 안내 메시지 제거
+boardCanvas.addEventListener('click', () => {
+  boardCanvas.focus();
+  focused = true;
+  boardCanvas.style.cursor = 'default';
+  // 게임 중이면 포커스 표시만, 아니면 무시
+  if (gameActive) drawBoard();
+});
+
+boardCanvas.addEventListener('focus', () => {
+  focused = true;
+});
+
+boardCanvas.addEventListener('blur', () => {
+  focused = false;
+});
+
+// 난이도 버튼
 document.querySelectorAll('.diff-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
@@ -164,6 +183,19 @@ function drawBoard() {
       piece.shape.forEach((row, r) => row.forEach((v, c) => { if (v) drawCell(ctx, piece.x+c, piece.y+r+gy, piece.id, CELL, 0.2); }));
     piece.shape.forEach((row, r) => row.forEach((v, c) => { if (v) drawCell(ctx, piece.x+c, piece.y+r, piece.id, CELL); }));
   }
+
+  // 포커스 안 잡혀있으면 클릭 안내 오버레이
+  if (gameActive && !focused) {
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    ctx.fillRect(0, 0, boardCanvas.width, boardCanvas.height);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 16px monospace';
+    ctx.fillText('클릭하면 게임 시작!', boardCanvas.width / 2, boardCanvas.height / 2 - 10);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '12px monospace';
+    ctx.fillText('WASD로 조작', boardCanvas.width / 2, boardCanvas.height / 2 + 14);
+  }
 }
 
 function drawNext() {
@@ -238,17 +270,17 @@ function startGame() {
   lastTime = 0;
   cancelAnimationFrame(rafId);
   rafId = requestAnimationFrame(gameLoop);
-  // 버튼 클릭 후 포커스가 버튼에 남지 않도록 캔버스로 이동
+  // 시작 후 캔버스 포커스
   boardCanvas.focus();
 }
 
 document.getElementById('btn-start').addEventListener('click', startGame);
 
-// window에 등록 → 포커스 위치와 무관하게 항상 키입력 수신
+// 키 입력 — window에 등록, 포커스 확인 후 처리
 window.addEventListener('keydown', e => {
   const handled = ['w', 'a', 's', 'd', 'W', 'A', 'S', 'D', ' '];
-  if (handled.includes(e.key)) e.preventDefault(); // 스크롤 등 브라우저 기본동작 차단
-  if (!gameActive) return;
+  if (handled.includes(e.key)) e.preventDefault();
+  if (!gameActive || !focused) return; // 포커스 없으면 무시
   if (e.key === 'a' || e.key === 'A') {
     if (!collide(grid, piece, -1, 0)) piece.x--;
   } else if (e.key === 'd' || e.key === 'D') {
