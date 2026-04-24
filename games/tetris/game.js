@@ -52,6 +52,10 @@ const overlay = document.getElementById('overlay');
 const overlayTitle = document.getElementById('overlay-title');
 const overlaySub = document.getElementById('overlay-sub');
 
+// 캔버스 포커스 설정 (키입력이 항상 캔버스로 가도록)
+boardCanvas.setAttribute('tabindex', '0');
+boardCanvas.style.outline = 'none';
+
 let grid, piece, nextPiece;
 let score, lines;
 let gameActive, rafId, lastTime;
@@ -234,14 +238,16 @@ function startGame() {
   lastTime = 0;
   cancelAnimationFrame(rafId);
   rafId = requestAnimationFrame(gameLoop);
+  // 버튼 클릭 후 포커스가 버튼에 남지 않도록 캔버스로 이동
+  boardCanvas.focus();
 }
 
 document.getElementById('btn-start').addEventListener('click', startGame);
 
-// WASD + Space 조작
-document.addEventListener('keydown', e => {
-  const handled = ['w','a','s','d','W','A','S','D',' '];
-  if (handled.includes(e.key)) e.preventDefault();
+// window에 등록 → 포커스 위치와 무관하게 항상 키입력 수신
+window.addEventListener('keydown', e => {
+  const handled = ['w', 'a', 's', 'd', 'W', 'A', 'S', 'D', ' '];
+  if (handled.includes(e.key)) e.preventDefault(); // 스크롤 등 브라우저 기본동작 차단
   if (!gameActive) return;
   if (e.key === 'a' || e.key === 'A') {
     if (!collide(grid, piece, -1, 0)) piece.x--;
