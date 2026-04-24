@@ -240,6 +240,8 @@ document.getElementById('btn-start').addEventListener('click', startGame);
 
 // WASD + Space 조작
 document.addEventListener('keydown', e => {
+  const handled = ['w','a','s','d','W','A','S','D',' '];
+  if (handled.includes(e.key)) e.preventDefault();
   if (!gameActive) return;
   if (e.key === 'a' || e.key === 'A') {
     if (!collide(grid, piece, -1, 0)) piece.x--;
@@ -253,7 +255,6 @@ document.addEventListener('keydown', e => {
     else if (!collide(grid, piece, 1, 0, rotated)) { piece.shape = rotated; piece.x++; }
     else if (!collide(grid, piece, -1, 0, rotated)) { piece.shape = rotated; piece.x--; }
   } else if (e.key === ' ') {
-    e.preventDefault();
     hardDrop();
   }
   drawBoard();
@@ -261,5 +262,3 @@ document.addEventListener('keydown', e => {
 
 drawBoard();
 drawNext();
-
-
